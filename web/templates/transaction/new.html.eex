@@ -1,0 +1,10 @@
+<%= form_for @changeset, transaction_path(@conn, :create), [multipart: true], fn f-> %>
+  <div class="form-group">
+    <%= text_input f, :transaction, placeholder: "Transaction", class: "form-control" %>
+    <%= text_input f, :category, placeholder: "Category", class: "form-control" %>
+    <%= number_input f, :amount, placeholder: "Amount", class: "form-control" %>
+    <%= error_tag f, :transaction %>
+  </div>
+
+  <%= submit "Save Transaction", class: "btn btn-primary" %>
+<% end %>

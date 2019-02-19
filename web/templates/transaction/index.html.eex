@@ -1,0 +1,38 @@
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Transaction</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th class="right"> 
+        <a href="transactions_roman">Convert to Roman Numerals</a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for transaction <- @transactions do %>
+      <tr>
+        <td>
+          <%= transaction.transaction %>
+        </td>
+        <td>
+          <%= transaction.category %>
+        </td>
+        <td >
+          <%= transaction.amount %>
+        </td>
+        <td class="right">
+          <%= link "Edit", to: transaction_path(@conn, :edit, transaction) %>
+          <%= link "Delete", to: transaction_path(@conn, :delete, transaction), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<div class="fixed-action-btn">
+  <%= link to: transaction_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red" do %> 
+    <i class="material-icons">add</i>
+  <% end %>
+</div>
